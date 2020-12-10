@@ -1,0 +1,26 @@
+services:
+  # db:
+  #   image: mysql
+  web:
+    image: actix-web-test:${CURRENT_VERSION:-latest}
+    build:
+      docker
+      # context: .
+      # dockerfile: ./docker/Dockerfile
+    # command: /bin/sh -c "cargo run --bin actix-web-test"
+    command: ["cargo", "run", "--bin", "actix-web-test"]
+    # command: sh -c "(while :; do date; sleep 1; done) >&2"
+    ports:
+      - "8080:8080"
+    # command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    # volumes:
+    #   - .:/myapp
+    # depends_on:
+    #   - db
+  nginx:
+    image: nginx:${CURRENT_VERSION:-latest}
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - "80:80"
