@@ -6,6 +6,13 @@ WORKDIR /actix-web-test
 RUN cargo install --path .
 RUN cargo build
 
+RUN git pull
+RUN cargo build
+
+
+RUN git pull
+RUN cargo build
+
 # COPY Cargo.toml ./
 # COPY Cargo.lock ./
 # RUN git pull
