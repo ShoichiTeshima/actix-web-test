@@ -23,6 +23,12 @@ RUN cargo build
 RUN git pull
 RUN cargo build
 
+RUN git pull
+RUN cargo build
+
+RUN cargo install diesel_cli
+RUN diesel setup
+
 # COPY Cargo.toml ./
 # COPY Cargo.lock ./
 # RUN git pull
