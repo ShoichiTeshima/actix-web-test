@@ -13,6 +13,13 @@ RUN cargo build
 RUN git pull
 RUN cargo build
 
+
+RUN git pull
+RUN cargo build
+
+RUN git pull
+RUN cargo build
+
 # COPY Cargo.toml ./
 # COPY Cargo.lock ./
 # RUN git pull
