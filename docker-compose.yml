@@ -9,15 +9,15 @@ services:
       # context: .
       # dockerfile: ./docker/Dockerfile
     # command: /bin/sh -c "cargo run --bin actix-web-test"
-    command: ["cargo", "run", "--bin", "actix-web-test"]
+    command: ["./setup.sh"]
     # command: sh -c "(while :; do date; sleep 1; done) >&2"
     ports:
       - "8080:8080"
     # command: bundle exec rails s -p 3000 -b '0.0.0.0'
     # volumes:
     #   - .:/myapp
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
   nginx:
     image: nginx:${CURRENT_VERSION:-latest}
     build:
@@ -28,6 +28,6 @@ services:
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
-    restart: always
+    # restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
